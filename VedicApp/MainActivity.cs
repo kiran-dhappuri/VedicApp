@@ -1,6 +1,7 @@
 ﻿using System;
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.Runtime;
 using Android.Views;
 using Android.Webkit;
@@ -11,9 +12,11 @@ using VedicApp.Models;
 
 namespace VedicApp
 {
-    [Activity(Label = "VedicApp", MainLauncher = true)]
+    [Activity(Label = "VedicApp", MainLauncher = true, Theme = "@android:style/Theme.NoTitleBar")]
     public class MainActivity : Activity
     {
+        Button _btnHome;
+        private const string BaseUrl = "http://productwebapplication.azurewebsites.net/";
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -21,6 +24,20 @@ namespace VedicApp
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
+            LoadWebPage();
+
+            _btnHome = FindViewById<Button>(Resource.Id.button1);
+            _btnHome.SetBackgroundColor(Color.Black);
+            _btnHome.SetTextColor(Color.WhiteSmoke);
+            _btnHome.Click += BtnHome_Click;
+        }
+        private void BtnHome_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("clicked");
+            LoadWebPage();
+        }
+        private void LoadWebPage()
+        {
             var webView = FindViewById<WebView>(Resource.Id.webView);
             webView.Settings.JavaScriptEnabled = true;
 
@@ -35,14 +52,14 @@ namespace VedicApp
             // Load the rendered HTML into the view with a base URL 
             // that points to the root of the bundled Assets folder
             //webView.LoadDataWithBaseURL("file:///android_asset/", page, "text/html", "UTF-8", null);
-            webView.LoadUrl("http://productwebapplication.azurewebsites.net/");
+            webView.LoadUrl(BaseUrl);
             webView.Settings.JavaScriptEnabled = true;
             webView.Settings.BuiltInZoomControls = true;
             webView.Settings.SetSupportZoom(true);
             webView.ScrollBarStyle = ScrollbarStyles.OutsideOverlay;
             webView.ScrollbarFadingEnabled = false;
-
         }
+       
 
         private class HybridWebViewClient : WebViewClient
         {

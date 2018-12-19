@@ -5,8 +5,15 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-  <WebView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:id="@+id/webView" />
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:id="@+id/webView" />
+    <Button
+        android:text="Home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:id="@+id/button1" />
 </LinearLayout>
