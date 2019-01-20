@@ -16,7 +16,9 @@ namespace VedicApp
     public class MainActivity : Activity
     {
         Button _btnHome;
-        private const string BaseUrl = "http://productwebapplication.azurewebsites.net/";
+        static ProgressBar _proBar;
+        //private const string BaseUrl = "http://productwebapplication.azurewebsites.net/";
+        private const string BaseUrl = "http://vedicshop.azurewebsites.net/";
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -54,12 +56,13 @@ namespace VedicApp
             //webView.LoadDataWithBaseURL("file:///android_asset/", page, "text/html", "UTF-8", null);
             webView.LoadUrl(BaseUrl);
             webView.Settings.JavaScriptEnabled = true;
-            webView.Settings.BuiltInZoomControls = true;
+            //webView.Settings.BuiltInZoomControls = true;
             webView.Settings.SetSupportZoom(true);
             webView.ScrollBarStyle = ScrollbarStyles.OutsideOverlay;
             webView.ScrollbarFadingEnabled = false;
+
+            _proBar = FindViewById<ProgressBar>(Resource.Id.progressBar1);
         }
-       
 
         private class HybridWebViewClient : WebViewClient
         {
@@ -93,6 +96,13 @@ namespace VedicApp
                 }
 
                 return true;
+            }
+
+            public override void OnPageFinished(WebView view, string url)
+            {
+                if(_proBar != null) _proBar.Visibility = ViewStates.Gone;
+                Console.WriteLine("Finished loading");
+                base.OnPageFinished(view, url);
             }
         }
     }

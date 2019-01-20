@@ -5,11 +5,19 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
+	
     <WebView
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_weight="1"
-        android:id="@+id/webView" />
+        android:id="@+id/webView">
+	</WebView>
+	<ProgressBar
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         style="@android:style/Widget.ProgressBar.Large"
+		 android:layout_gravity="center"
+		 android:id="@+id/progressBar1"/>
     <Button
         android:text="Home"
         android:layout_width="match_parent"
