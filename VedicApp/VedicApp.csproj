@@ -65,6 +65,7 @@
     <Compile Include="Views\RazorView.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>RazorView.cshtml</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Views\web.config" />
   </ItemGroup>

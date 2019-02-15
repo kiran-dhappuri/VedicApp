@@ -32,6 +32,8 @@ namespace VedicApp
             _btnHome.SetBackgroundColor(Color.Black);
             _btnHome.SetTextColor(Color.WhiteSmoke);
             _btnHome.Click += BtnHome_Click;
+
+            _proBar.IndeterminateDrawable.SetColorFilter(Android.Graphics.Color.Cyan, Android.Graphics.PorterDuff.Mode.Multiply);
         }
         private void BtnHome_Click(object sender, EventArgs e)
         {
