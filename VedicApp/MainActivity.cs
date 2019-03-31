@@ -18,7 +18,8 @@ namespace VedicApp
         Button _btnHome;
         static ProgressBar _proBar;
         //private const string BaseUrl = "http://productwebapplication.azurewebsites.net/";
-        private const string BaseUrl = "http://vedicshop.azurewebsites.net/";
+        //private const string BaseUrl = "http://vedicshop.azurewebsites.net/";
+        private const string BaseUrl = "https://bestow.azurewebsites.net/";
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
